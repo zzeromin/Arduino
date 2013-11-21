@@ -1,7 +1,7 @@
 // LED 두 개를 깜빡이기(Blink 예제)
 
-int LED1 = 6;  // LED1은 디지털 핀 6번 연결
-int LED2 = 7;  // LED2는 디지털 핀 7번 연결
+int LED1 = 11;  // LED1은 디지털 핀 11번 연결
+int LED2 = 12;  // LED2는 디지털 핀 12번 연결
 
 void setup()
 {
