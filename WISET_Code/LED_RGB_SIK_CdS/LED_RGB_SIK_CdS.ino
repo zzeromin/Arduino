@@ -85,10 +85,10 @@ void loop()
   // read the analog in value:
   sensorValue = analogRead(analogInPin);            
   // map it to the range of the analog out:
-  outputValue = map(sensorValue, 0, 1023, 0, 255);  
+  //outputValue = map(sensorValue, 0, 1023, 0, 255);  
   // change the analog out value: 
 
-  if ( outputValue >= 200 ) {
+  if ( sensorValue >= 150 ) {
       RGBoff();
       delay(1000);
   } else {
@@ -130,9 +130,9 @@ void RGBoff()
 {
   // Off (all LEDs off):
 
-  digitalWrite(RED_PIN, HIGH);
-  digitalWrite(GREEN_PIN, HIGH);
-  digitalWrite(BLUE_PIN, HIGH);
+  digitalWrite(RED_PIN, LOW);
+  digitalWrite(GREEN_PIN, LOW);
+  digitalWrite(BLUE_PIN, LOW);
   delay(100);
 }
 
