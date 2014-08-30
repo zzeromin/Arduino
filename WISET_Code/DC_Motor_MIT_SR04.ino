@@ -29,21 +29,22 @@ void loop()
 {
   long duration, distance;
   digitalWrite(trigPin, LOW);  // Added this line
-  delayMicroseconds(2); // Added this line
+  delayMicroseconds(10); // Added this line
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10); // Added this line
   digitalWrite(trigPin, LOW);
+  delayMicroseconds(10); // Added this line
   duration = pulseIn(echoPin, HIGH);
   distance = (duration/2) / 29.1;
   
-  //  자동차 앞 60cm 이내에 물체가 없으면 정지
-  if ( distance > 100 || distance <= 0 ) {
+  //  자동차 앞 120cm 이내에 물체가 없으면 정지
+  if ( distance > 120 || distance <= 0 ) {
     Serial.println("Out of range");
     motor_control(0, 0, 0, 0); // Stop
     digitalWrite(LED, LOW); 
   }
-  //  10~59cm 내에 물체를 감지하면 출발
-  else if ( distance > 10 && distance < 90 )
+  //  10~100cm 내에 물체를 감지하면 출발
+  else if ( distance > 10 && distance < 100 )
   {
     Serial.print("moving Forward! ");
     Serial.print(distance);
