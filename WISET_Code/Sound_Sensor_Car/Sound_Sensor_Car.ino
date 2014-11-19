@@ -9,12 +9,14 @@ void setup()
 void loop()
 {
   int controlA = analogRead(in);
-//  Serial.print( "A = " );
-//  Serial.println( controlA );
+  //Serial.print( "A = " );
+  //Serial.println( controlA );
   
-  if ( controlA > 100 )
-     analogWrite( out, controlA );
-  else
+  if ( controlA > 100 ) {
+     analogWrite( out, 200 );
+     delay(2000);
+  } else {
      analogWrite( out, 0 );
-  delay(200);  
+  }
+  delay(100);
 }
