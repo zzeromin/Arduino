@@ -32,9 +32,14 @@ int Y[] = {1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1};
 int Z[] = {1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1};
 int letterSpace;
 int dotTime;
+int BUTTON = 3; // 푸쉬버튼 핀 번호
+int val = 0; // 버튼 상태를 저장하는 변수
+int val_OLD = 0;
+int STATE = 0;
 
 void setup()
 {
+  pinMode(BUTTON, INPUT); // LED을 출력으로 설정
   // 7-11번핀의 LED를 출력으로 설정합니다.
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
@@ -82,17 +87,34 @@ void printLetter(int letter[])
 }
 void loop()
 {
-  // 출력하기를 원하는 문자를 순차적으로 입력합니다. 언더바는 공백을 의미합니다.
-  printLetter(G);
-  printLetter(U);
-  printLetter(R);
-  printLetter(Y);
-  printLetter(_);
-  printLetter(A);
-  printLetter(R);
-  printLetter(D);
-  printLetter(U);
-  printLetter(I);
-  printLetter(N);
-  printLetter(O);
+  // 버튼을 입력하면 입력 값을 buttonstate에 저장
+  val = digitalRead(BUTTON);
+
+  if ( (val == HIGH) && (val_OLD == LOW) ) {
+    STATE = 1 - STATE;
+    delay(10);
+  }
+  val_OLD = val;
+
+  // 버튼을 눌렀을 때 버튼 상태가 HIGH면
+  if (STATE == HIGH) {
+    // LED ON
+    printLetter(G);
+    printLetter(U);
+    printLetter(R);
+    printLetter(Y);
+    printLetter(_);
+    printLetter(A);
+    printLetter(R);
+    printLetter(D);
+    printLetter(U);
+    printLetter(I);
+    printLetter(N);
+    printLetter(O);
+    // 출력하기를 원하는 문자를 순차적으로 입력합니다. 언더바는 공백을 의미합니다.
+  }
+  else {
+    // LED OFF
+    printLetter(O);
+  }
 }
