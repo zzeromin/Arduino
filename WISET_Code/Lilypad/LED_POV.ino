@@ -39,7 +39,7 @@ int STATE = 0;
 
 void setup()
 {
-  pinMode(BUTTON, INPUT); // LED을 출력으로 설정
+  pinMode(BUTTON, INPUT_PULLUP); // LED을 출력으로 설정
   // 7-11번핀의 LED를 출력으로 설정합니다.
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
@@ -99,22 +99,17 @@ void loop()
   // 버튼을 눌렀을 때 버튼 상태가 HIGH면
   if (STATE == HIGH) {
     // LED ON
-    printLetter(G);
-    printLetter(U);
-    printLetter(R);
-    printLetter(Y);
-    printLetter(_);
-    printLetter(A);
-    printLetter(R);
-    printLetter(D);
-    printLetter(U);
-    printLetter(I);
-    printLetter(N);
+    printLetter(L);
     printLetter(O);
+    printLetter(V);
+    printLetter(E);
+    printLetter(_);
     // 출력하기를 원하는 문자를 순차적으로 입력합니다. 언더바는 공백을 의미합니다.
   }
   else {
     // LED OFF
-    printLetter(O);
+    for (int i = 7; i <= 11; i++) {
+      digitalWrite(i, LOW);
+    }
   }
 }
