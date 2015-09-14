@@ -37,7 +37,7 @@ int noteDurations[] = {
 };
 
 void setup() {
-  for (int thisNote = 0; thisNote < 45; thisNote++) {
+  for (int thisNote = 0; thisNote < 47; thisNote++) {
 
     int noteDuration = 1000 / noteDurations[thisNote];
     tone(8, melody[thisNote], noteDuration);
