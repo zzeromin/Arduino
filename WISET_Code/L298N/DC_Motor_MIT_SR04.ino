@@ -29,15 +29,14 @@ void loop()
 {
   long duration, distance;
   digitalWrite(trigPin, LOW);  // Added this line
-  delayMicroseconds(10); // Added this line
+  delayMicroseconds(3); // Added this line
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10); // Added this line
   digitalWrite(trigPin, LOW);
-  delayMicroseconds(10); // Added this line
   duration = pulseIn(echoPin, HIGH);
-  distance = (duration/2) / 29.1;
+  distance = (duration/2) / 29; // The speed of sound is 340 m/s or 29 microseconds per centimeter.
   
-  //  자동차 앞 120cm 이내에 물체가 없으면 정지
+  //  자동차 앞 120cm 이상 거리에 물체가 없으면 정지
   if ( distance > 120 || distance <= 0 ) {
     Serial.println("Out of range");
     motor_control(0, 0, 0, 0); // Stop
