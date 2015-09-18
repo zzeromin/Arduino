@@ -1,5 +1,6 @@
 /*Ultrasonic ranging module HC - SR04 provides 2cm - 400cm non-contact
 measurement function, the ranging accuracy can reach to 3mm.
+reference :  http://www.micropik.com/PDF/HCSR04.pdf
 */
 
 int trigPin = 9;
