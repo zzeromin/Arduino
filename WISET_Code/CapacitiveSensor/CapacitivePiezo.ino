@@ -1,3 +1,5 @@
+// CapacitiveSensor library link http://playground.arduino.cc/Main/CapacitiveSensor?from=Main.CapSense
+
 #include <CapacitiveSensor.h>
 
 CapacitiveSensor sensor = CapacitiveSensor(2, 3);
