@@ -8,8 +8,13 @@ int IN2 = 5;
 int IN3 = 6;
 int IN4 = 7;
 
-void motor_control(int i1, int i2, int i3, int i4);
-// ENA, IN1, IN2, ENB, IN3, IN4
+void motor_control(int i1, int i2, int i3, int i4)
+{
+    digitalWrite(IN1, i1);
+    digitalWrite(IN2, i2);
+    digitalWrite(IN3, i3);
+    digitalWrite(IN4, i4);
+}
 
 SoftwareSerial BTSerial(TX, RX);
 // Connect HC-06 TX, RX
