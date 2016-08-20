@@ -31,7 +31,6 @@ void loop()
     switch ( BTSerial.read() ) {
       case 'F': //  Forward
         motor_control(1, 0, 1, 0);
-        digitalWrite(LED, HIGH);
         break;
       case 'B': // Backward
         motor_control(0, 1, 0, 1);
