@@ -2,6 +2,7 @@
 // 아두이노 핀 번호 내용
 // 버튼입력: 2~7번
 // LED: 8~13번
+// * reference: Button_Led_Joystick.png
 
 int buttonState[6] = {}; // 버튼 상태를 저장하는 변수
 
