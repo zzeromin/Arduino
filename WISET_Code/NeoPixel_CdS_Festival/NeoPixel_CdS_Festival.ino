@@ -81,11 +81,18 @@ void loop() {
   }
   
   while ( count == 4 ) {
-    //sensorRead(50);
+    sensorRead(basicDelay);
     valuePrint();
-    //rainbow(15);
-    rainbowCycle(20);
+    rainbow(15);
+    //rainbowCycle(20);
     //theaterChaseRainbow(15);
+    delay(20);
+  }
+
+  while ( count == 5 ) {
+    sensorRead(basicDelay);
+    valuePrint();
+    colorWipe(strip.Color(0, 0, 0), 20);
     delay(20);
   }
 }
@@ -101,11 +108,11 @@ void valuePrint(void) {
 void sensorRead(int waiting) {
   input = analogRead(A5);
   output = map(input, 0, 1023, 0, 254);
-  if ( output < 200 ) {
+  if ( output < 20 ) {
     count++;
-    if ( count == 5 ) {
+    if ( count == 6 ) {
       count = 0;
-      delay(100);
+      delay(500);
       }
   }
   delay(waiting);
@@ -130,7 +137,10 @@ void rainbow(uint8_t wait) {
     }
     strip.show();
     sensorRead(10);
-    if ( count !=4 ) break;
+    if ( count != 4 ) {
+      delay(500);
+      break;
+    }
     delay(wait);
   }
 }
