@@ -41,44 +41,51 @@ void setup() {
   //pixels.begin(); // This initializes the NeoPixel library.
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
-  Serial.begin(9600);
+  //Serial.begin(9600);
 }
 
 void loop() {
 
   int waiting;
-  int basicDelay = 500;
-  valuePrint();
+  int basicDelay = 200;
+  //valuePrint();
 
   while ( count == 0 ) {
     sensorRead(basicDelay);
     valuePrint();
-    colorWipe(strip.Color(150, 0, 255), 20); // Violet
+    colorWipe(strip.Color(158, 34, 93), 20); // Pink
     delay(20);    
   }
 
   while ( count == 1 ) {
     sensorRead(basicDelay);
     valuePrint();
+    colorWipe(strip.Color(255, 0, 0), 20); // Red
+    delay(20);    
+  }
+
+  while ( count == 2 ) {
+    sensorRead(basicDelay);
+    valuePrint();
     colorWipe(strip.Color(0, 255, 0), 20); // Green
     delay(20);
   }
 
-  while ( count == 2 ) {
+  while ( count == 3 ) {
     sensorRead(basicDelay);
     valuePrint();
     colorWipe(strip.Color(0, 0, 255), 20); // Blue
     delay(20);
   }
   
-  while ( count == 3 ) {
+  while ( count == 4 ) {
     sensorRead(basicDelay);
     valuePrint();
     colorWipe(strip.Color(255, 255, 0), 20); // Yellow
     delay(20);
   }
   
-  while ( count == 4 ) {
+  while ( count == 5 ) {
     sensorRead(basicDelay);
     valuePrint();
     rainbow(15);
@@ -87,7 +94,7 @@ void loop() {
     delay(20);
   }
 
-  while ( count == 5 ) {
+  while ( count == 6 ) {
     sensorRead(basicDelay);
     valuePrint();
     colorWipe(strip.Color(0, 0, 0), 20);
@@ -104,11 +111,11 @@ void valuePrint(void) {
 }
 
 void sensorRead(int waiting) {
-  input = analogRead(A5);
+  input = analogRead(A3);
   output = map(input, 0, 1023, 0, 254);
   if ( output < 20 ) {
     count++;
-    if ( count == 6 ) {
+    if ( count == 7 ) {
       count = 0;
       delay(500);
       }
@@ -135,7 +142,7 @@ void rainbow(uint8_t wait) {
     }
     strip.show();
     sensorRead(10);
-    if ( count != 4 ) {
+    if ( count != 5 ) {
       delay(500);
       break;
     }
@@ -206,4 +213,3 @@ uint32_t Wheel(byte WheelPos) {
   WheelPos -= 170;
   return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
 }
-
