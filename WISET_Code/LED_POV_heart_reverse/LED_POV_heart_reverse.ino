@@ -1,8 +1,8 @@
 /*
-Title        : LED_POV_heart_reverse.ino
-Author       : zzeromin, member of Duksung Univ. WISE Center
-Creation Date: Jun 26, 2017
-Homepage     : http://wise.duksung.ac.kr
+  Title        : LED_POV_heart_reverse.ino
+  Author       : zzeromin, member of Duksung Univ. WISE Center
+  Creation Date: Jun 26, 2017
+  Homepage     : http://wise.duksung.ac.kr
 */
 
 void setup() {
