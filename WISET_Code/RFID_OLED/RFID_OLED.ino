@@ -39,8 +39,6 @@ void setup()
 
 void loop()
 {
-  int matchValue;
-
   if (rfid.PICC_IsNewCardPresent())
   {
     if (readRFID() == 1)
