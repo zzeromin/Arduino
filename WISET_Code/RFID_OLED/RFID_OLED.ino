@@ -27,8 +27,8 @@ String uidString;
 int piezopin = 7;
 int note[] = {2093, 2349, 2637, 2793, 3136, 3520, 3951, 4186}; //도레미파솔라시도
 
-void setup() {
-
+void setup()
+{
   Serial.begin(9600); // 시리얼통신 초기화
   SPI.begin(); // SPI bus 초기화
   rfid.PCD_Init(); // MFRC522 초기화
@@ -37,19 +37,32 @@ void setup() {
   initOLED(); // OLED 초기화
 }
 
-void loop() {
+void loop()
+{
+  int matchValue;
 
   if (rfid.PICC_IsNewCardPresent())
   {
-    readRFID();
+    if (readRFID() == 1)
+    {
+      Serial.println("\nAuthenticated Card");
+      playSound();
+      printUnlockMessage();
+    } else {
+      Serial.println("\nUnknown Card");
+      playBeep(100);
+    }
   }
-  delay(100);
 
+  // Halt PICC
+  rfid.PICC_HaltA();
+
+  // Stop encryption on PCD
+  rfid.PCD_StopCrypto1();
 }
 
-void readRFID()
+int readRFID()
 {
-
   rfid.PICC_ReadCardSerial();
   Serial.print(F("\nPICC type: "));
   MFRC522::PICC_Type piccType = rfid.PICC_GetType(rfid.uid.sak);
@@ -73,37 +86,18 @@ void readRFID()
   printUID();
 
   int i = 0;
-  boolean match = true;
+  int match = 1;
+
   while (i < rfid.uid.size)
   {
     if (!(rfid.uid.uidByte[i] == code[i]))
     {
-      match = false;
+      match = 0;
     }
     i++;
   }
 
-  if (match)
-  {
-    Serial.println("\nI know this card!");
-    int elementCount = sizeof(note) / sizeof(int);
-    for (int i = 0; i < elementCount; i++)
-    {
-      tone(piezopin, note[i], 500);
-      delay(100);
-    }
-    printUnlockMessage();
-  } else
-  {
-    Serial.println("\nUnknown Card");
-    playSound(100);
-  }
-
-  // Halt PICC
-  rfid.PICC_HaltA();
-
-  // Stop encryption on PCD
-  rfid.PCD_StopCrypto1();
+  return match;
 }
 
 void printDec(byte *buffer, byte bufferSize) {
@@ -174,8 +168,18 @@ void printUnlockMessage()
   display.display();
 }
 
-void playSound(int delaytime)
+void playBeep(int delaytime)
 {
   tone(piezopin, 500, delaytime); //500: 음의 높낮이(주파수), delaytime: 음의 지속시간(1000이면 1초)
   delay(20);
+}
+
+void playSound()
+{
+  int elementCount = sizeof(note) / sizeof(int);
+  for (int i = 0; i < elementCount; i++)
+  {
+    tone(piezopin, note[i], 500);
+    delay(100);
+  }
 }
