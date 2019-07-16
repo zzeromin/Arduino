@@ -121,7 +121,7 @@ void clearUID()
 {
   display.setTextColor(BLACK); // or BLACK);
   display.setTextSize(1);
-  display.setCursor(30, 20);
+  display.setCursor(30, 25);
   display.print(uidString);
   display.display();
 }
@@ -130,9 +130,9 @@ void printUID()
 {
   display.setTextColor(WHITE); // or BLACK);
   display.setTextSize(1);
-  display.setCursor(0, 20);
+  display.setCursor(0, 25);
   display.print("UID: ");
-  display.setCursor(30, 20);
+  display.setCursor(30, 25);
   display.print(uidString);
   display.display();
 }
