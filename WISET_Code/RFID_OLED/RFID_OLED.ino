@@ -20,7 +20,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 MFRC522 rfid(SS_PIN, RST_PIN); // Instance of the class
 MFRC522::MIFARE_Key key;
 
-int code[] = {249, 137, 141, 110}; //This is the stored UID
+int code[] = {230, 156, 39, 249}; //This is the stored UID
 int codeRead = 0;
 String uidString;
 
