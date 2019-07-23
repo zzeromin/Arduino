@@ -158,6 +158,7 @@ void playBeep(int delaytime)
 {
   tone(piezopin, 500, delaytime); //500: 음의 높낮이(주파수), delaytime: 음의 지속시간(1000이면 1초)
   delay(20);
+  noTone(piezopin);
 }
 
 void playSound()
@@ -166,6 +167,7 @@ void playSound()
   for (int i = 0; i < elementCount; i++)
   {
     tone(piezopin, note[i], 500);
-    delay(100);
+    delay(500);
+    noTone(piezopin);
   }
 }
