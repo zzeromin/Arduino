@@ -2,6 +2,8 @@
  * reference by
  * IDEA:  https://create.arduino.cc/projecthub/mircemk/diy-arduino-height-measuring-machine-0437dd
  * ANIMATION:  https://blog.naver.com/chandong83/221160691170
+ * install library: newping, adafruit gfx, adafruit ssd1306
+ * SDA A4, SCL A5, TRIG 9pin, ECHO 10pin
  */
 
 #include <NewPing.h>
