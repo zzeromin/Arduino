@@ -17,7 +17,7 @@
 #define OLED_RESET     4 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-NewPing sonar(9, 10, 200);
+NewPing sonar(9, 10, 200); // TRIG 9pin, ECHO 10pin
 int base = 180;
 int height;
 
